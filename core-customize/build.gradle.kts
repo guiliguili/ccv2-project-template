@@ -10,6 +10,14 @@ repositories {
     jcenter()
 }
 
+tasks.named("ybuild") {
+    dependsOn("bootstrapPlatform")
+}
+
+tasks.named("yinitialize") {
+    dependsOn("bootstrapPlatform")
+}
+
 val generateLocalProperties by tasks.registering(WriteProperties::class) {
     comment = "GENEREATED AT " + java.time.Instant.now()
     outputFile = project.file("hybris/config/local.properties")
